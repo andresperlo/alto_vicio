@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Videojuegos" />
+    <meta name="keywords" content="Ocio" />
+    <meta name="Emiliano Garzón-Juan Cruz" />
+    <!-- css de bootstrap -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <!-- nuestro css -->
+    <link rel="stylesheet" href="../css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/4ea4d09914.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- scrept fontawesome -->
+    <link
+      rel="shortcut icon"
+      href="../img/h9LYy23x_400x400.png"
+      type="image/x-icon"
+    />
+    <title>El vicio 🎮</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark styleNavBg">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="../img/h9LYy23x_400x400.png"
+              alt=""
+              width="140"
+              height="auto"
+            />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarElvicio"
+            aria-controls="navbarElvicio"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarElvicio">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="login.html" aria-current="page"
+                  >Login</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href=""
+                  data-bs-toggle="modal"
+                  data-bs-target="#Modalsuscripcion"
+                >
+                  Suscripcion
+                </a>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="Modalsuscripcion"
+                  tabindex="-1"
+                  aria-labelledby="ModalsuscripcionLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalsuscripcionLabel">
+                          Completa el formulario
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="nombre"
+                          placeholder="Ingrese su nombre"
+                          required
+                        />
+                        <input
+                          placeholder="Correo electrónico"
+                          type="email"
+                          class="form-control my-2"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                        />
+                      </div>
+                      <div
+                        class="mb-3 form-check d-flex justify-content-center"
+                      >
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          id="check-box"
+                        />
+                        <label class="form-check-label" for="check-box">
+                          Acepto las condiciones
+                        </label>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Cerrar
+                        </button>
+                        <form>
+                          <button type="submit" class="btn btn-primary">
+                            Enviar
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contactos.html">Contactos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="nosotros.html">Nosotros</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="container my-5">
+        <h1 class="display-2 text-center">Login</h1>
+        <hr />
+        <section class="row">
+          <article class="col-sm-12 col-md-6">
+            <form class="bg-light p-3 shadow mb-2">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label"
+                  >Correo electrónico</label
+                >
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label"
+                  >Contraseña</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                />
+              </div>
+              <a href="error404.html" target="_blank">
+                <button type="button" class="btn btn-primary">Enviar</button>
+              </a>
+
+              <h6>Loguearme con:</h6>
+              <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-success" type="button">
+                  <a
+                    class="text-light"
+                    href="https://accounts.google.com/v3/signin/identifier?dsh=S-385432983%3A1663545412038141&continue=https%3A%2F%2Fwww.google.com%3Fhl%3Des&ec=GAlA8wE&hl=es&flowName=GlifWebSignIn&flowEntry=AddSession"
+                    target="_blank"
+                    >Google</a
+                  >
+                </button>
+                <button class="btn btn-primary" type="button">
+                  <a
+                    class="text-light"
+                    href="https://es-es.facebook.com/login.php"
+                    target="_blank"
+                    >Facebook</a
+                  >
+                </button>
+                <!-- Button trigger modal -->
+              </div>
+              <div class="my-3">
+                <a
+                  href=""
+                  data-bs-toggle="modal"
+                  data-bs-target="#Modalcontraseña"
+                >
+                  Olvide mi contraseña
+                </a>
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="Modalcontraseña"
+                  tabindex="-1"
+                  aria-labelledby="ModalcontraseñaLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="ModalcontraseñaLabel">
+                          Recuperar contraseña
+                        </h5>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
+                      </div>
+                      <div class="modal-body">
+                        <label for="exampleInputEmail1" class="form-label"
+                          >Ingresa tu correo electrónico y te enviaremos un
+                          enlace para que recuperes el acceso a tu
+                          cuenta.</label
+                        >
+                        <input
+                          placeholder="Correo electrónico"
+                          type="email"
+                          class="form-control"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                        />
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Cerrar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          Enviar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </article>
+          <article class="col-sm-12 col-md-6">
+            <img
+              src="../img/5a8a88c6ae653ac01a73b9c2.jpg"
+              alt="assassins-creed"
+            />
+          </article>
+        </section>
+      </section>
+    </main>
+    <footer class="styleNavBg text-light">
+      <section class="container">
+        <div class="row">
+          <div class="col-sm-12 col-md-4 my-2">
+            <figure>
+              <a href="index.html">
+                <img
+                  src="../img/h9LYy23x_400x400.png"
+                  alt="logo El vicio"
+                  width="140"
+                  height="auto"
+                />
+              </a>
+            </figure>
+          </div>
+          <div class="col-sm-12 col-md-4 text-light text-center my-4">
+            <p class="fw-bold">J&E Devs™</p>
+
+            <p>2022 - © Copyright. Todos los derechos reservados.</p>
+          </div>
+          <div class="col-sm-12 col-md-4 text-light text-center my-4">
+            <h4 class="fs-6">Seguinos en nuestras redes</h4>
+            <a
+              href="https://es-es.facebook.com/login.php"
+              target="_blank"
+              class="text-secondary mx-2"
+            >
+              <i class="fa-brands fa-square-facebook fa-2x"></i>
+            </a>
+            <a
+              href="https://www.instagram.com/?hl=es"
+              target="_blank"
+              class="text-secondary mx-2"
+            >
+              <i class="fa-brands fa-square-instagram fa-2x"></i>
+            </a>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              class="text-secondary mx-2"
+            >
+              <i class="fa-brands fa-square-twitter fa-2x"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+    </footer>
+    <!-- Javascript min bootstrap -->
+    <script src="../js/bootstrap.min.js"></script>
+  </body>
+</html>

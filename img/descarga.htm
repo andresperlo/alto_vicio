@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head><meta charset="UTF-8" /><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0" />
+	<meta name="theme-color" content="#125774">
+
+	<title>La prensa especializada sitúa God of War como el mejor juego del año | Actualidad Gadget</title>
+
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="https://www.actualidadgadget.com/xmlrpc.php" />
+
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<meta name="uri-translation" content="on" /><link rel="alternate" hreflang="es" href="https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="af" href="https://www.actualidadgadget.com/af/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sq" href="https://www.actualidadgadget.com/sq/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="am" href="https://www.actualidadgadget.com/am/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ar" href="https://www.actualidadgadget.com/ar/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="hy" href="https://www.actualidadgadget.com/hy/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="az" href="https://www.actualidadgadget.com/az/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="eu" href="https://www.actualidadgadget.com/eu/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="be" href="https://www.actualidadgadget.com/be/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="bn" href="https://www.actualidadgadget.com/bn/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="bs" href="https://www.actualidadgadget.com/bs/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="bg" href="https://www.actualidadgadget.com/bg/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ca" href="https://www.actualidadgadget.com/ca/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ceb" href="https://www.actualidadgadget.com/ceb/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ny" href="https://www.actualidadgadget.com/ny/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="zh-CN" href="https://www.actualidadgadget.com/zh-CN/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="zh-TW" href="https://www.actualidadgadget.com/zh-TW/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="co" href="https://www.actualidadgadget.com/co/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="hr" href="https://www.actualidadgadget.com/hr/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="cs" href="https://www.actualidadgadget.com/cs/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="da" href="https://www.actualidadgadget.com/da/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="nl" href="https://www.actualidadgadget.com/nl/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="en" href="https://www.actualidadgadget.com/en/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="eo" href="https://www.actualidadgadget.com/eo/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="et" href="https://www.actualidadgadget.com/et/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="tl" href="https://www.actualidadgadget.com/tl/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="fi" href="https://www.actualidadgadget.com/fi/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="fr" href="https://www.actualidadgadget.com/fr/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="fy" href="https://www.actualidadgadget.com/fy/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="gl" href="https://www.actualidadgadget.com/gl/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ka" href="https://www.actualidadgadget.com/ka/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="de" href="https://www.actualidadgadget.com/de/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="el" href="https://www.actualidadgadget.com/el/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="gu" href="https://www.actualidadgadget.com/gu/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ht" href="https://www.actualidadgadget.com/ht/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ha" href="https://www.actualidadgadget.com/ha/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="haw" href="https://www.actualidadgadget.com/haw/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="he" href="https://www.actualidadgadget.com/iw/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="hi" href="https://www.actualidadgadget.com/hi/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="hmn" href="https://www.actualidadgadget.com/hmn/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="hu" href="https://www.actualidadgadget.com/hu/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="is" href="https://www.actualidadgadget.com/is/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ig" href="https://www.actualidadgadget.com/ig/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="id" href="https://www.actualidadgadget.com/id/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ga" href="https://www.actualidadgadget.com/ga/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="it" href="https://www.actualidadgadget.com/it/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ja" href="https://www.actualidadgadget.com/ja/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="jv" href="https://www.actualidadgadget.com/jw/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="kn" href="https://www.actualidadgadget.com/kn/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="kk" href="https://www.actualidadgadget.com/kk/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="km" href="https://www.actualidadgadget.com/km/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ko" href="https://www.actualidadgadget.com/ko/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ku" href="https://www.actualidadgadget.com/ku/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ky" href="https://www.actualidadgadget.com/ky/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="lo" href="https://www.actualidadgadget.com/lo/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="la" href="https://www.actualidadgadget.com/la/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="lv" href="https://www.actualidadgadget.com/lv/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="lt" href="https://www.actualidadgadget.com/lt/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="lb" href="https://www.actualidadgadget.com/lb/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="mk" href="https://www.actualidadgadget.com/mk/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="mg" href="https://www.actualidadgadget.com/mg/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ms" href="https://www.actualidadgadget.com/ms/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ml" href="https://www.actualidadgadget.com/ml/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="mt" href="https://www.actualidadgadget.com/mt/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="mi" href="https://www.actualidadgadget.com/mi/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="mr" href="https://www.actualidadgadget.com/mr/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="mn" href="https://www.actualidadgadget.com/mn/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="my" href="https://www.actualidadgadget.com/my/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ne" href="https://www.actualidadgadget.com/ne/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="no" href="https://www.actualidadgadget.com/no/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ps" href="https://www.actualidadgadget.com/ps/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="fa" href="https://www.actualidadgadget.com/fa/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="pl" href="https://www.actualidadgadget.com/pl/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="pt" href="https://www.actualidadgadget.com/pt/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="pa" href="https://www.actualidadgadget.com/pa/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ro" href="https://www.actualidadgadget.com/ro/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ru" href="https://www.actualidadgadget.com/ru/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sm" href="https://www.actualidadgadget.com/sm/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="gd" href="https://www.actualidadgadget.com/gd/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sr" href="https://www.actualidadgadget.com/sr/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="st" href="https://www.actualidadgadget.com/st/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sn" href="https://www.actualidadgadget.com/sn/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sd" href="https://www.actualidadgadget.com/sd/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="si" href="https://www.actualidadgadget.com/si/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sk" href="https://www.actualidadgadget.com/sk/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sl" href="https://www.actualidadgadget.com/sl/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="so" href="https://www.actualidadgadget.com/so/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="su" href="https://www.actualidadgadget.com/su/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sw" href="https://www.actualidadgadget.com/sw/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="sv" href="https://www.actualidadgadget.com/sv/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="tg" href="https://www.actualidadgadget.com/tg/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ta" href="https://www.actualidadgadget.com/ta/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="te" href="https://www.actualidadgadget.com/te/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="th" href="https://www.actualidadgadget.com/th/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="tr" href="https://www.actualidadgadget.com/tr/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="uk" href="https://www.actualidadgadget.com/uk/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="ur" href="https://www.actualidadgadget.com/ur/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="uz" href="https://www.actualidadgadget.com/uz/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="vi" href="https://www.actualidadgadget.com/vi/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="cy" href="https://www.actualidadgadget.com/cy/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="xh" href="https://www.actualidadgadget.com/xh/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="yi" href="https://www.actualidadgadget.com/yi/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="yo" href="https://www.actualidadgadget.com/yo/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+<link rel="alternate" hreflang="zu" href="https://www.actualidadgadget.com/zu/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+
+	<!-- This site is optimized with the Yoast SEO plugin v19.6.1 - https://yoast.com/wordpress/plugins/seo/ -->
+	<meta name="description" content="La prensa especializada sitúa God of War como el mejor juego del año. Descubre más sobre las críticas tan positivas que el juego para PS4 está obteniendo por parte de la crítica." />
+	<link rel="canonical" href="https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+	<meta property="og:locale" content="es_ES" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="La prensa especializada sitúa God of War como el mejor juego del año" />
+	<meta property="og:description" content="La prensa especializada sitúa God of War como el mejor juego del año. Descubre más sobre las críticas tan positivas que el juego para PS4 está obteniendo por parte de la crítica." />
+	<meta property="og:url" content="https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/" />
+	<meta property="og:site_name" content="Actualidad Gadget" />
+	<meta property="article:publisher" content="http://www.facebook.com/ActualidadGadget" />
+	<meta property="article:published_time" content="2018-04-13T12:00:27+00:00" />
+	<meta property="article:modified_time" content="2018-04-13T07:42:05+00:00" />
+	<meta property="og:image" content="https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg" />
+	<meta property="og:image:width" content="830" />
+	<meta property="og:image:height" content="400" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="author" content="Eder Esteban" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@agadget" />
+	<meta name="twitter:site" content="@agadget" />
+	<meta name="twitter:label1" content="Escrito por" />
+	<meta name="twitter:data1" content="Eder Esteban" />
+	<meta name="twitter:label2" content="Tiempo de lectura" />
+	<meta name="twitter:data2" content="2 minutos" />
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel="amphtml" href="https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/amp/" /><meta name="generator" content="AMP for WP 1.0.77.51"/><link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//cdn.ampproject.org,' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com,' />
+<link rel='dns-prefetch' href='//googleads.g.doubleclick.net,' />
+<link rel='dns-prefetch' href='//google.com,' />
+<link rel='dns-prefetch' href='//google.es,' />
+<link rel='dns-prefetch' href='//tpc.googlesyndication.com,' />
+<link rel='dns-prefetch' href='//stats.g.doubleclick.net,' />
+<link rel='dns-prefetch' href='//cm.g.doubleclick.net' />
+
+<link rel="alternate" type="application/rss+xml" title="Actualidad Gadget &raquo; Feed" href="https://www.actualidadgadget.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Actualidad Gadget &raquo; Feed de los comentarios" href="https://www.actualidadgadget.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Actualidad Gadget &raquo; Comentario Las primeras críticas de God of War son muy positivas del feed" href="https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/feed/" />
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link data-minify="1" rel="stylesheet preload" id="dashicons-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-includes/css/dashicons.min.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='dashicons-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-includes/css/dashicons.min.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="thickbox-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-includes/js/thickbox/thickbox.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='thickbox-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-includes/js/thickbox/thickbox.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="appstore-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/abn-appstore/css/AppStore.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='appstore-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/abn-appstore/css/AppStore.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="gtranslate-style-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/gtranslate/gtranslate-style24.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='gtranslate-style-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/gtranslate/gtranslate-style24.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link rel="stylesheet preload" id="wp-block-library-css" href="https://www.actualidadgadget.com/wp-includes/css/dist/block-library/style.min.css?ver=6.0.2" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel='stylesheet' id='wp-block-library-css'  href='https://www.actualidadgadget.com/wp-includes/css/dist/block-library/style.min.css?ver=6.0.2' type='text/css' media='all' />
+</noscript><style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel="stylesheet preload" id="toc-screen-css" href="https://www.actualidadgadget.com/wp-content/plugins/AB-table-of-contents-plus/screen.min.css?ver=1509" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel='stylesheet' id='toc-screen-css'  href='https://www.actualidadgadget.com/wp-content/plugins/AB-table-of-contents-plus/screen.min.css?ver=1509' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="contact-form-7-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='contact-form-7-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="responsive-lightbox-nivo_lightbox-css-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/responsive-lightbox-pro/assets/nivo-lightbox/nivo-lightbox.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='responsive-lightbox-nivo_lightbox-css-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/responsive-lightbox-pro/assets/nivo-lightbox/nivo-lightbox.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="responsive-lightbox-nivo_lightbox-css-d-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/responsive-lightbox-pro/assets/nivo-lightbox/themes/default/default.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='responsive-lightbox-nivo_lightbox-css-d-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/responsive-lightbox-pro/assets/nivo-lightbox/themes/default/default.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="wprs-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/wp-rich-snippets/assets/css/style_front.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='wprs-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/wp-rich-snippets/assets/css/style_front.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link rel="stylesheet preload" id="wprs-bootstrap-css" href="https://www.actualidadgadget.com/wp-content/plugins/wp-rich-snippets/assets/css/bootstrap.min.css?ver=6.0.2" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel='stylesheet' id='wprs-bootstrap-css'  href='https://www.actualidadgadget.com/wp-content/plugins/wp-rich-snippets/assets/css/bootstrap.min.css?ver=6.0.2' type='text/css' media='all' />
+</noscript><link rel='stylesheet' id='abn-css'  href='https://www.actualidadgadget.com/wp-content/themes/abn/css/stylesheet.min.css?v=7.2.19' type='text/css' media='screen' />
+<link data-minify="1" rel="stylesheet preload" id="font-awesome-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/themes/abn/css/fontawesome-all.min.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='font-awesome-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/themes/abn/css/fontawesome-all.min.css?ver=1662449464' type='text/css' media='screen' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="newsletter-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/newsletter/style.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='newsletter-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/newsletter/style.css?ver=1662449464' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="easy_table_style-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/easy-table/themes/default/style.css?ver=1662449466" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='easy_table_style-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/easy-table/themes/default/style.css?ver=1662449466' type='text/css' media='all' />
+</noscript><link data-minify="1" rel="stylesheet preload" id="aawp-css" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/aawp/assets/dist/css/main.css?ver=1662449464" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link data-minify="1" rel='stylesheet' id='aawp-css'  href='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/aawp/assets/dist/css/main.css?ver=1662449464' type='text/css' media='all' />
+</noscript><style id='rocket-lazyload-inline-css' type='text/css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://www.actualidadgadget.com/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+</style>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<script type='text/javascript' id='abn-shares-js-extra'>
+/* <![CDATA[ */
+var ABNshares = {"ajaxURL":"https:\/\/www.actualidadgadget.com\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/abn-shares/public/js/abn-shares-public.js?ver=1662449464' id='abn-shares-js' defer></script>
+<link rel="https://api.w.org/" href="https://www.actualidadgadget.com/wp-json/" /><link rel="alternate" type="application/json" href="https://www.actualidadgadget.com/wp-json/wp/v2/posts/127617" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.actualidadgadget.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.actualidadgadget.com/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 6.0.2" />
+<link rel='shortlink' href='https://www.actualidadgadget.com/?p=127617' />
+<link rel="alternate" type="application/json+oembed" href="https://www.actualidadgadget.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.actualidadgadget.com%2Flas-primeras-criticas-de-god-of-war-son-muy-positivas%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.actualidadgadget.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.actualidadgadget.com%2Flas-primeras-criticas-de-god-of-war-son-muy-positivas%2F&#038;format=xml" />
+<style type="text/css">div#toc_container {width: 100%;}</style><style type="text/css">.aawp .aawp-tb__row--highlight{background-color:#256aaf;}.aawp .aawp-tb__row--highlight{color:#256aaf;}.aawp .aawp-tb__row--highlight a{color:#256aaf;}</style><style type='text/css'>.appImageContainer {width: auto;margin: 0px;}</style><script type="rocketlazyloadscript">var gt_request_uri = '/las-primeras-criticas-de-god-of-war-son-muy-positivas/';</script><style>.nivo-lightbox-theme-default.nivo-lightbox-overlay { background: none repeat scroll 0 0 rgba(0,0,0,0.6)!important;}</style><style>.nivo-lightbox-theme-default .nivo-lightbox-image img{ cursor:pointer; cursor: hand;}</style><style>.nivo-lightbox-theme-default .nivo-lightbox-title { background:#000!important;}</style><style></style><style>.nivo-lightbox-theme-default .nivo-lightbox-nav:hover { background-color:rgba(0,0,0,.5)!important;}</style><style>
+/* BODY */
+span.wprs_rating:after, span.rating-editor:after {color:#125774 !important;} #wprs_square .editorrating_average {background: #125774 !important;} #wprs_square .progress-bar-warning, .wprs_display_rating_percentage .progress-bar-warning, .wprs_comparison .progress-bar-warning {background-color: #125774 !important;}span.wprs_rating-user:after, .wprs_user_rating_stars .fa-fw, span.rating-user:after, #wprs_square .wprs_submit_review {color:#428bca !important;} #wprs_square .wprs_submit_review:hover {color:#333 !important;} #wprs_square .userrating_average span {background: #428bca !important;} #wprs_square .progress-bar-info, .wprs_userrating_criteria .progress-bar-info {background-color: #428bca !important;} span.rating-user:after, #wprs_square span.rating-user:after, .wprs_user_rating span.rating-user:after, .wprs_woo_star_rating span.rating-user:after, .wprs_widget_rating span.rating-user:after {color: #428bca !important;}.comment-form .user_range .ui-widget-header {background: #428bca !important;}.product span.rating-user:after, .star-rating span:before, .wprswoo_switchtab i, #wprs_square .wprs_submit_review i {color: #428bca !important;}.user_star_rating_mini {background: #428bca !important;}.ar_button {background-color: #dd3333 !important;}.ar_button_demo {background-color: #ccc !important;}.wprs_pros {background-color: #e9faee !important;}.wprs_cons {background-color: #faede9 !important;}.wprs_cta {background-color: #efefef !important;}</style>
+
+<link rel="preload" as="font" href="https://www.actualidadgadget.com/wp-content/themes/abn/fonts/fa-brands-400.woff2" crossorigin>
+<link rel="preload" as="font" href="https://www.actualidadgadget.com/wp-content/themes/abn/fonts/fa-solid-900.woff2" crossorigin>
+<link rel="preload" as="font" href="https://www.actualidadgadget.com/wp-content/themes/abn/fonts/fa-regular-400.woff2" crossorigin>	<style>
+		:root {
+			--main-color:          #125774;
+			--alt-color:           #063C53;
+			--soft-gray:           #F2F2F2;
+			--softest-gray:        #F8F8F8;
+			--dark-gray:           #545454;
+
+			--wrapper-width:       1250px;
+
+			--font-primary:        -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+			--font-secondary:      -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+			--font-awesome:        'Font Awesome 5 Free';
+			--font-awesome-brands: 'Font Awesome 5 Brands';
+
+			--smallest-font:       .625rem;        /* 10px */
+			--smaller-font:        .75rem;         /* 12px */
+			--small-font:          1rem;           /* 16px */
+			--normal-font:         1.125rem;       /* 18px */
+			--big-font:            1.75rem;        /* 28px */
+			--bigger-font:         2.375rem;       /* 38px */
+			--biggest-font:        2.875rem;       /* 46px */
+
+			--text-normal:         300;            /* normal Text */
+			--text-bold:           500;            /* Bold Text */
+
+			--enlightment-color: #fff		}
+
+		*,:after,:before{box-sizing:border-box}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}body{margin:0;font-family:var(--font-primary);font-weight:400;font-size:var(--normal-font);padding-top:38px;transition:all .3s}img,picture{display:block;max-width:100%;height:auto}ol,p:not(.miniby):not(.post-meta-comments):not(:empty),ul{font-size:var(--normal-font);line-height:1.7rem;margin:1rem 0}ol,ul{padding-left:2rem}b,strong{font-weight:700}em{font-style:italic}@media screen and (max-width:64em){.main-navigation{display:none}}@media screen and (min-width:64em){.burger-toggle{display:none}.main-navigation{display:block;position:absolute;width:100%;height:auto;top:36px;background-color:var(--main-color);left:0;bottom:auto;padding:0;overflow-y:visible;transition:none;z-index:97}}.content{padding:0 .7rem}.page h1,.page h2,.page h3:not(.sitename-description),.page h4,.page h5,.page h6,.page-header h1,.page-header h2,.page-header h3,.page-header h4,.page-header h5,.page-header h6,.post h1:not(.post-title),.post h2,.post h3,.post h4,.post h5,.post h6,.single h1:not(.post-title),.single h2,.single h3,.single h4,.single h5,.single h6{font-family:var(--font-primary);font-weight:400;margin-top:3rem;margin-bottom:2rem}.page h1,.page-header h1,.post h1,.single h1{color:var(--main-color);line-height:var(--bigger-font);font-size:var(--big-font)}.page h2,.page-header h2,.post h2,.single h2{font-size:var(--big-font)}.page h3,.page-header h3,.post h3,.single h3{font-size:24px}.page h4,.page-header h4,.post h4,.single h4{font-size:22px}.page h5,.page-header h5,.post h5,.single h5{font-size:var(--normal-font)}.miniby,.post-meta-comments{font-size:var(--smaller-font)}.miniby a,.post-meta-comments a{text-decoration:none;color:var(--main-color)}.post-readmore{font-size:var(--smaller-font)}.site-header{width:100%;position:absolute;top:0;left:0;background-color:var(--main-color)}.site-header .wrapper{padding:.2rem .5rem;min-height:36px;max-height:54px;box-sizing:border-box;justify-content:center}.logo-content{position:relative;z-index:10;display:flex;justify-content:flex-start;align-items:center;height:100%}.site-logo{width:auto;height:100%;margin-right:.3rem;display:flex;align-items:center}.site-logo img,.site-logo svg{width:100%;max-height:24px;max-width:35px;margin:0 auto}.sitename-description{margin:0!important;position:relative}.sitename-description a,.sitename-description--link{text-decoration:none;font-weight:lighter;font-size:var(--normal-font);line-height:var(--big-font);color:#fff;display:flex}.sitename-description .sitename-word:nth-child(2){font-weight:700}div[data-menu-button]{display:none}.burger-toggle{background:0 0;border:none;color:#fff;padding:0;width:24px;height:36px;position:absolute;top:0;left:.3rem;z-index:10;margin:auto}.burger-icon{width:24px}.burger-icon div,.burger-icon:after,.burger-icon:before{background-color:#fff;border-radius:3px;content:'';display:block;height:2px;margin:4px 0;transition:all .2s ease-in-out}.burger-icon:before{margin-top:0}.burger-toggle[aria-expanded=true] .burger-icon:before{transform:translateY(6px) rotate(135deg)}.burger-toggle[aria-expanded=true] .burger-icon:after{transform:translateY(-6px) rotate(-135deg)}.burger-toggle[aria-expanded=true] .burger-icon div{transform:scale(0)}.publi.below-title,.publi.content-first-paragraph{position:relative;min-height:300px}.publi.content-first-paragraph{min-height:250px}.publi.below-title::before,.publi.content-first-paragraph::before,.widget_abn_admanager_sidestealer::before{content:'Publicidad';text-transform:uppercase;font-size:.7rem;text-align:center;line-height:250px;width:100%;height:100%;position:absolute;top:0;left:0}.sidebar{flex:0 0 100%;padding:2rem 1rem}.sidebar .widget{margin-bottom:1rem}@media screen and (min-width:64em){body{padding-top:80px}.sidebar{display:block}}	</style>
+
+			<link href="https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/feed/" title="Actualidad Gadget" type="application/rss+xml" rel="alternate">
+		<link rel="shortcut icon" type="image/x-icon" href="https://www.actualidadgadget.com/wp-content/uploads/2020/05/cropped-favicon.png" /><meta name="author" content="Eder Esteban">      <meta name="onesignal" content="wordpress-plugin"/>
+            <script type="rocketlazyloadscript">
+	// Delay welcome prompt
+	setTimeout(function(){
+  		console.log("about to initialize OneSignal"); 
+  		window.OneSignal = window.OneSignal || [];
+  		window.OneSignal.push(function() {
+    	window.OneSignal.init(window._oneSignalInitOptions);
+    	OneSignal.showSlidedownPrompt();
+  		});
+	}, 20000);
+      window.OneSignal = window.OneSignal || [];
+
+      OneSignal.push( function() {
+        OneSignal.SERVICE_WORKER_UPDATER_PATH = "OneSignalSDKUpdaterWorker.js.php";
+                      OneSignal.SERVICE_WORKER_PATH = "OneSignalSDKWorker.js.php";
+                      OneSignal.SERVICE_WORKER_PARAM = { scope: "/" };
+        OneSignal.setDefaultNotificationUrl("https://www.actualidadgadget.com");
+        var oneSignal_options = {};
+        window._oneSignalInitOptions = oneSignal_options;
+
+        oneSignal_options['wordpress'] = true;
+oneSignal_options['appId'] = 'b2ff2174-df0a-4942-b0f6-c434076320d1';
+oneSignal_options['allowLocalhostAsSecureOrigin'] = true;
+oneSignal_options['welcomeNotification'] = { };
+oneSignal_options['welcomeNotification']['disable'] = true;
+oneSignal_options['path'] = "https://www.actualidadgadget.com/wp-content/plugins/ABN-onesignal/sdk_files/";
+oneSignal_options['promptOptions'] = { };
+oneSignal_options['promptOptions']['actionMessage'] = "quiere enviarte notificaciones";
+oneSignal_options['promptOptions']['exampleNotificationTitleDesktop'] = "Esto es un ejemplo de notificación";
+oneSignal_options['promptOptions']['exampleNotificationMessageDesktop'] = "Las notificaciones aparecerán en tu escritorio";
+oneSignal_options['promptOptions']['exampleNotificationTitleMobile'] = "Ejemplo de notificación";
+oneSignal_options['promptOptions']['exampleNotificationMessageMobile'] = "Las notificaciones aparecerán en tu dispositivo";
+oneSignal_options['promptOptions']['exampleNotificationCaption'] = "(puedes cancelar en cualquier momento)";
+oneSignal_options['promptOptions']['acceptButtonText'] = "Continuar";
+oneSignal_options['promptOptions']['cancelButtonText'] = "No gracias";
+oneSignal_options['promptOptions']['siteName'] = "https://www.actualidadgadget.com";
+oneSignal_options['promptOptions']['autoAcceptTitle'] = "Aceptar";
+          /* OneSignal: Using custom SDK initialization. */
+                });
+
+      function documentInitOneSignal() {
+        var oneSignal_elements = document.getElementsByClassName("OneSignal-prompt");
+
+        var oneSignalLinkClickHandler = function(event) { OneSignal.push(['registerForPushNotifications']); event.preventDefault(); };        for(var i = 0; i < oneSignal_elements.length; i++)
+          oneSignal_elements[i].addEventListener('click', oneSignalLinkClickHandler, false);
+      }
+
+      if (document.readyState === 'complete') {
+           documentInitOneSignal();
+      }
+      else {
+           window.addEventListener("load", function(event){
+               documentInitOneSignal();
+          });
+      }
+    </script>
+<link rel="icon" href="https://www.actualidadgadget.com/wp-content/uploads/2020/05/cropped-favicon-150x150.png" sizes="32x32" />
+<link rel="icon" href="https://www.actualidadgadget.com/wp-content/uploads/2020/05/cropped-favicon-300x300.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.actualidadgadget.com/wp-content/uploads/2020/05/cropped-favicon-180x180.png" />
+<meta name="msapplication-TileImage" content="https://www.actualidadgadget.com/wp-content/uploads/2020/05/cropped-favicon-300x300.png" />
+<!-- analytics del blog -->
+<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-422620-32"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-422620-32');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics GA4 -->
+<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=G-XPNCK4WGH4"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XPNCK4WGH4');
+</script>
+<!-- fin analytics -->
+<link data-minify="1" rel="preload" href="https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/easy-table/css/easy-table.css?ver=1662449464" as="style">
+<!-- google adsense -->
+<script type="rocketlazyloadscript" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2740134681475878" crossorigin="anonymous"></script>
+<!-- google adsense --><noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
+	<!--[if lt IE 9]>
+	<meta http-equiv="X-UA-Compatible" content="IE=7, IE=9">
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<link rel="stylesheet" href="https://www.actualidadgadget.com/wp-content/themes/abn/css/ie.css" />
+	<![endif]-->
+</head>
+
+<body id="top" class="post-template-default single single-post postid-127617 single-format-standard aawp-custom ">
+
+<!-- Div para la campaña de publicidad -->
+<div style="max-width: 100%; margin:auto">
+<!-- /Div para la campaña de publicidad -->
+
+
+<header class="site-header " role="banner">
+	<div class="wrapper">
+					<div class="logo-content">
+									<a href="https://www.actualidadgadget.com/" class="site-logo" title="Actualidad Gadget" rel="home">
+						<svg class="site-logo-icon" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 379 394" xmlns="http://www.w3.org/2000/svg"><path d="m174.468 73.477c-6.527-7.675-10.468-17.62-10.468-28.477 0-24.284 19.716-44 44-44s44 19.716 44 44-19.716 44-44 44c-10.52 0-20.183-3.7-27.759-9.87l-47.448 44.905c11.344 13.144 18.207 30.259 18.207 48.965 0 10.969-2.36 21.392-6.598 30.784l47.403 30.343c18.544-27.231 49.796-45.127 85.195-45.127 56.847 0 103 46.153 103 103s-46.153 103-103 103-103-46.153-103-103c0-15.741 3.539-30.662 9.863-44.009l-47.545-30.434c-13.669 18.465-35.606 30.443-60.318 30.443-41.394 0-75-33.606-75-75s33.606-75 75-75c19.786 0 37.793 7.679 51.199 20.214z" fill="#fff" transform="translate(-1 -1)"/></svg>					</a>
+					<h3 class="sitename-description"><a href="https://www.actualidadgadget.com/" class="sitename-description--link"><span class="sitename-word">Actualidad</span><span class="sitename-word">Gadget</span></a></h3>			</div>
+				<div data-menu-button>
+			<div class="burger-icon"><div></div></div>
+		</div>
+	</div>
+</header><!-- #site-header -->
+
+		<div id="mainNavigation" class="main-navigation" hidden>
+			<nav role="navigation">
+				<ul id="navigation-top" class="menu"><li id="menu-item-116245" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-116245"><a href="https://www.actualidadgadget.com/mejores-tarifas-movil/">Tarifas móvil</a>
+<ul class="sub-menu">
+	<li id="menu-item-127606" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127606"><a href="https://www.actualidadgadget.com/tarifas-de-internet/">Tarifas de internet</a></li>
+</ul>
+</li>
+<li id="menu-item-136789" class="nav-youtube menu-item menu-item-type-custom menu-item-object-custom menu-item-136789"><a rel="nofollow" href="https://www.youtube.com/channel/UCzBCc1qjxLCQyX2e7lba6Ng?sub_confirmation=1">Youtube</a></li>
+<li id="menu-item-120007" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-120007"><a href="https://www.actualidadgadget.com/top-ofertas-amazon-semana/">Ofertas Amazon</a></li>
+<li id="menu-item-55668" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-55668"><a href="https://www.actualidadgadget.com/category/reviews/">Reviews</a></li>
+<li id="menu-item-55681" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-55681"><a href="https://www.actualidadgadget.com/category/presentaciones/">Presentaciones</a></li>
+<li id="menu-item-55677" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-55677"><a href="https://www.actualidadgadget.com/category/eventos/">Eventos</a>
+<ul class="sub-menu">
+	<li id="menu-item-70519" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-70519"><a href="https://www.actualidadgadget.com/tag/google-io/">Google I/O</a></li>
+	<li id="menu-item-55678" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55678"><a href="https://www.actualidadgadget.com/tag/ces/">CES</a></li>
+	<li id="menu-item-55679" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55679"><a href="https://www.actualidadgadget.com/tag/mwc/">MWC</a></li>
+</ul>
+</li>
+<li id="menu-item-55669" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-55669"><a href="https://www.actualidadgadget.com/category/moviles/">Móviles</a></li>
+<li id="menu-item-39674" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-39674"><a href="https://www.actualidadgadget.com/category/tablet-multimedia/">Tablets</a></li>
+<li id="menu-item-123665" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-123665"><a href="https://www.actualidadgadget.com/category/criptomonedas/">Criptomonedas</a>
+<ul class="sub-menu">
+	<li id="menu-item-123666" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-123666"><a href="https://www.actualidadgadget.com/bitcoin-criptomoneda/">Comprar Bitcoins</a></li>
+	<li id="menu-item-123669" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-123669"><a href="https://www.actualidadgadget.com/ethereum-que-es-y-comprar-ethers/">Comprar Ethereum</a></li>
+	<li id="menu-item-123668" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-123668"><a href="https://www.actualidadgadget.com/litecoin-que-es-y-comprar-litecoin/">Comprar Litecoin</a></li>
+	<li id="menu-item-123667" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-123667"><a href="https://www.actualidadgadget.com/mineria-criptomonedas-en-la-nube/">Minería en la nube</a></li>
+</ul>
+</li>
+<li id="menu-item-55670" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-has-children menu-item-55670"><a href="https://www.actualidadgadget.com/category/gadgets/">Gadgets</a>
+<ul class="sub-menu">
+	<li id="menu-item-55671" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-55671"><a href="https://www.actualidadgadget.com/category/smartwatch-gadget/">Smartwatch</a></li>
+	<li id="menu-item-55676" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-55676"><a href="https://www.actualidadgadget.com/category/dispositivos-de-vestir/">Dispositivos de vestir</a></li>
+	<li id="menu-item-39677" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-39677"><a href="https://www.actualidadgadget.com/category/ereaders-lectores-electronicos/">eReaders</a></li>
+</ul>
+</li>
+<li id="menu-item-55673" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-55673"><a title="videojuegos y videoconsolas" href="https://www.actualidadgadget.com/category/videojuegos/">Juegos</a></li>
+<li id="menu-item-55674" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-55674"><a href="https://www.actualidadgadget.com/category/portatiles/">Portátiles</a></li>
+</ul>			</nav>
+				<div id="shortcutIcons" class="shortcut-icons">
+				<a href="#" id="searchToggle" class="search-toggle">
+			<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M19.728 17.2942L15.8332 13.3994C15.6574 13.2236 15.4191 13.126 15.1691 13.126H14.5323C15.6105 11.747 16.2512 10.0125 16.2512 8.12559C16.2512 3.63698 12.6142 0 8.12559 0C3.63698 0 0 3.63698 0 8.12559C0 12.6142 3.63698 16.2512 8.12559 16.2512C10.0125 16.2512 11.747 15.6105 13.126 14.5323V15.1691C13.126 15.4191 13.2236 15.6574 13.3994 15.8332L17.2942 19.728C17.6614 20.0952 18.2552 20.0952 18.6185 19.728L19.7241 18.6225C20.0913 18.2552 20.0913 17.6614 19.728 17.2942ZM8.12559 13.126C5.36367 13.126 3.12523 10.8914 3.12523 8.12559C3.12523 5.36367 5.35977 3.12523 8.12559 3.12523C10.8875 3.12523 13.126 5.35977 13.126 8.12559C13.126 10.8875 10.8914 13.126 8.12559 13.126Z" fill="white"/>
+			</svg>
+		</a>
+	</div>
+			</div>
+		
+
+
+<div id="main" class="wrapper main">
+<!-- * single.php * -->
+<div id="content" class="content" role="main">
+<!-- * content-single.php * -->
+<article id="post-127617" class="post-127617 post type-post status-publish format-standard has-post-thumbnail category-consolas category-videojuegos gfont-osans">
+	<header class="post-header">
+				<h1 class="post-title">Las primeras críticas de God of War son muy positivas</h1>
+		<aside id="abn_singlestealer" class="publi below-title  movil-no "><!-- actualidadgadget-responsive-debajotitulo -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2740134681475878"
+     data-ad-slot="1459478878"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><!-- #singlestealer.publi.below-title [ responsive debajo titulo @ below-title ] -->		<div class="post-meta">
+			<p class="miniby"><span><a href="https://www.actualidadgadget.com/author/eder-esteban/" title="Ver todos los artículos de Eder Esteban"><span>Eder Esteban</span></a> | <span><time class="entry-date" datetime=""></time></span> |  <a href="https://www.actualidadgadget.com/category/consolas/" rel="category tag">Consolas</a></span>, <span><a href="https://www.actualidadgadget.com/category/videojuegos/" rel="category tag">Videojuegos</a></p>				<p class="post-meta-comments">
+					<a id="commentsHeaderToggle" title="Sin comentarios" href="https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/#comments">
+						Sin comentarios					</a>
+				</p>
+						</div>
+	</header><!-- .post-header -->
+
+	<div class="post-content">
+		
+<div id="abn-shares-buttons"><div class="fixed-inner"><a id="facebookwindow" class="abns-button abns-button--facebook external" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.actualidadgadget.com%2Flas-primeras-criticas-de-god-of-war-son-muy-positivas%2F&#038;t=Las%20primeras%20cr%C3%ADticas%20de%20God%20of%20War%20son%20muy%20positivas&#038;i=https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg" title="Share on Facebook" target="_blank" rel="nofollow" onclick="gtag('event', 'click', {'event_category': 'ABNshares', 'event_label': 'Facebook'});">
+<div class="abns-button-inner">
+<i class="fa fa-facebook"></i>
+<span class="abns-share-text">Comparte</span>
+</div>
+</a>
+<a class="abns-button abns-button--twitter external" href="http://twitter.com/intent/tweet?text=Las%20primeras%20cr%C3%ADticas%20de%20God%20of%20War%20son%20muy%20positivas%20https%3A%2F%2Fwww.actualidadgadget.com%2Flas-primeras-criticas-de-god-of-war-son-muy-positivas%2F%20v%C3%ADa%20%40" onclick="window.open(this.href, 'twitterwindow','left=20,top=20,width=600,height=300,toolbar=0,resizable=1'); gtag('event', 'click', {'event_category': 'ABNshares', 'event_label': 'Twitter'}); return false;" title="Tweet" target="_blank" rel="nofollow">
+<div class="abns-button-inner">
+<i class="fa fa-twitter"></i>
+<span class="abns-share-text">Twitea</span>
+</div>
+</a>
+<a class="abns-button abns-button--whats" href="whatsapp://send?text=Las%20primeras%20cr%C3%ADticas%20de%20God%20of%20War%20son%20muy%20positivas%20God%20of%20War%20es%20uno%20de%20los%20juegos%20para%20PS4%20m%C3%A1s%20esperados%20del%20a%C3%B1o.%20Las%20%C3%BAltimas%20semanas%20se%20han%20ido%20desvelando%20informaciones%20sobre%20el%20juego%20que%20han%20generado%20mucha%20expectaci%C3%B3n.%20Aunque%20han%20sido%20las%20cr%C3%ADticas%20...%20%C2%BB%20https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/" title="Whatsapp" rel="nofollow" onclick="gtag('event', 'click', {'event_category': 'ABNshares', 'event_label': 'WhatsApp'});">
+<div class="abns-button-inner">
+<i class="fa fa-whatsapp"></i>
+<span class="abns-share-text">Env&iacute;a</span>
+</div>
+</a>
+<a class="abns-button abns-button--pinterest external" href="http://pinterest.com/pin/create/bookmarklet/?url=https%3A%2F%2Fwww.actualidadgadget.com%2Flas-primeras-criticas-de-god-of-war-son-muy-positivas%2F&#038;is_video=false&#038;description=Las%20primeras%20cr%C3%ADticas%20de%20God%20of%20War%20son%20muy%20positivas%20%23%20God%20of%20War%20es%20uno%20de%20los%20juegos%20para%20PS4%20m%C3%A1s%20esperados%20del%20a%C3%B1o.%20Las%20%C3%BAltimas%20semanas%20se%20han%20ido%20desvelando%20informaciones%20sobre%20el%20juego%20que%20han%20generado%20mucha%20expectaci%C3%B3n.%20Aunque%20han%20sido%20las%20cr%C3%ADticas%20...%20%C2%BB&#038;media=https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg" title="Pin" target="_blank" rel="nofollow" onclick="gtag('event', 'click', {'event_category': 'ABNshares', 'event_label': 'Pinterest'});">
+<div class="abns-button-inner">
+<i class="fa fa-pinterest"></i>
+<span class="abns-share-text">Pinea</span>
+</div>
+</a>
+<a class="abns-button abns-button--email external" href="mailto:?subject=Las%20primeras%20cr%C3%ADticas%20de%20God%20of%20War%20son%20muy%20positivas&#038;body=God%20of%20War%20es%20uno%20de%20los%20juegos%20para%20PS4%20m%C3%A1s%20esperados%20del%20a%C3%B1o.%20Las%20%C3%BAltimas%20semanas%20se%20han%20ido%20desvelando%20informaciones%20sobre%20el%20juego%20que%20han%20generado%20mucha%20expectaci%C3%B3n.%20Aunque%20han%20sido%20las%20cr%C3%ADticas%20...%20%C2%BB%20https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/" title="Email" rel="nofollow" onclick="gtag('event', 'click', {'event_category': 'ABNshares', 'event_label': 'Email'});">
+<div class="abns-button-inner">
+<i class="fa fa-envelope"></i>
+<span class="abns-share-text">Email</span>
+</div>
+</a>
+<a class="abns-button abns-button--print external" href="http://www.printfriendly.com/print/?url=https%3A%2F%2Fwww.actualidadgadget.com%2Flas-primeras-criticas-de-god-of-war-son-muy-positivas%2F" target="_blank" rel="nofollow" onclick="gtag('event', 'click', {'event_category': 'ABNshares', 'event_label': 'Imprimir'});">
+<div class="abns-button-inner">
+<i class="fa fa-print"></i>
+<span class="abns-share-text mini">Print</span>
+</div>
+</a>
+</div></div><p><picture class="size-full wp-image-126999 aligncenter">
+<source type="image/webp" data-lazy-srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg.webp 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-300x145.jpg.webp 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-320x154.jpg.webp 320w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-400x193.jpg.webp 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-500x241.jpg.webp 500w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20830%20400&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 830px) 100vw, 830px"/>
+<img src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20830%20400&#039;%3E%3C/svg%3E" alt="" width="830" height="400" data-lazy-srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-300x145.jpg 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-320x154.jpg 320w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-400x193.jpg 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-500x241.jpg 500w" data-lazy-sizes="(max-width: 830px) 100vw, 830px" data-lazy-src="https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg"/>
+</picture>
+<noscript><picture class="size-full wp-image-126999 aligncenter">
+<source type="image/webp" srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg.webp 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-300x145.jpg.webp 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-320x154.jpg.webp 320w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-400x193.jpg.webp 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-500x241.jpg.webp 500w" sizes="(max-width: 830px) 100vw, 830px"/>
+<img src="https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg" alt="" width="830" height="400" srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-300x145.jpg 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-320x154.jpg 320w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-400x193.jpg 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war-500x241.jpg 500w" sizes="(max-width: 830px) 100vw, 830px"/>
+</picture>
+</noscript><p><aside id="abn_singlestealer" class="publi content-first-paragraph   tablet-no"><!-- actualidadgadget-1-parrafo-movil -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2740134681475878"
+     data-ad-slot="4124316685"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><!-- #singlestealer.publi.content-first-paragraph [ 1Parrafo movil @ content-first-paragraph ] --></p></p>
+<p><strong>God of War es uno de los juegos para PS4 m&aacute;s esperados del a&ntilde;o</strong>. Las &uacute;ltimas semanas se han ido desvelando informaciones sobre el juego que han generado mucha expectaci&oacute;n. Aunque han sido las cr&iacute;ticas profesionales del juego, las primeras en llegar, las que est&aacute;n generando verdadera sensaci&oacute;n en redes sociales. &iquest;<em>El motivo?</em> Dichas <strong>cr&iacute;ticas son de lo m&aacute;s positivas</strong> con el juego.</p>
+<p>De hecho, podemos ver que en muchos casos las puntuaciones se acercan a la puntuaci&oacute;n m&aacute;xima. <strong>Por lo que los cr&iacute;ticos y prensa especializada son muy positivos sobre&nbsp;God of War</strong>. Esto est&aacute; causando una gran revoluci&oacute;n en la red. Aumentando as&iacute; la expectaci&oacute;n sobre el t&iacute;tulo.<p><aside id="abn_singlestealer" class="publi inside-content   "><!-- responsive-actualidadgadget-entreposts -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2740134681475878"
+     data-ad-slot="5974170231"
+     data-ad-format="rectangle"
+     data-full-width-responsive="true"></ins>
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><!-- #singlestealer.publi.inside-content [ Responsive-entreposts @ inside-content ] --></p></p>
+<p><span id="more-127617"></span></p>
+<p><strong>Tanto la prensa nacional como internacional es un&aacute;nime sobre&nbsp;God of War.</strong> Las puntuaciones var&iacute;an, pero las cr&iacute;ticas tienen claro que se trata de un juego de calidad y que obtiene por lo general una puntuaci&oacute;n de sobresaliente. As&iacute; que las sensaciones son muy positivas.</p>
+<p><picture class="size-full wp-image-127619 aligncenter">
+<source type="image/webp" data-lazy-srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War.png.webp 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-300x168.png.webp 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-400x225.png.webp 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-500x281.png.webp 500w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-170x96.png.webp 170w" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20830%20466&#039;%3E%3C/svg%3E" data-lazy-sizes="(max-width: 830px) 100vw, 830px"/>
+<img src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%20830%20466&#039;%3E%3C/svg%3E" alt="God of War" width="830" height="466" data-lazy-srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War.png 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-300x168.png 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-400x225.png 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-500x281.png 500w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-170x96.png 170w" data-lazy-sizes="(max-width: 830px) 100vw, 830px" data-lazy-src="https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War.png"/>
+</picture>
+<noscript><picture class="size-full wp-image-127619 aligncenter">
+<source type="image/webp" srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War.png.webp 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-300x168.png.webp 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-400x225.png.webp 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-500x281.png.webp 500w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-170x96.png.webp 170w" sizes="(max-width: 830px) 100vw, 830px"/>
+<img src="https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War.png" alt="God of War" width="830" height="466" srcset="https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War.png 830w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-300x168.png 300w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-400x225.png 400w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-500x281.png 500w, https://www.actualidadgadget.com/wp-content/uploads/2018/04/God-of-War-170x96.png 170w" sizes="(max-width: 830px) 100vw, 830px"/>
+</picture>
+</noscript></p>
+<p>De hecho,&nbsp;<strong>God of War se ha colocado ya como el juego mejor valorado en lo que vamos de a&ntilde;o</strong>. As&iacute; que los usuarios de PS4 est&aacute;n esperando con ganas el lanzamiento del juego para poder comprobar si lo que la prensa dice es verdad. Aunque ya hay medios que lo califican como una obra maestra.<p><aside id="abn_singlestealer" class="publi video-intext   "><div style="text-align:center; margin-bottom:10px;" class="nav-youtube"><a href="https://www.youtube.com/user/ActualidadGadget?sub_confirmation=1" rel="nofollow" class=" nav-youtube external" style="background-color: #125774; color:white !important; padding:10px;text-decoration:none;" target="_blank">Suscríbete a nuestro canal de Youtube</a>
+</div>
+<!-- actualidadgadget-responsive-video -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2740134681475878"
+     data-ad-slot="4077777357"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></aside><!-- #singlestealer.publi.video-intext [ responsive-intext-posts @ video-intext ] --></p></p>
+<p><strong>Por lo general sus puntuaciones se sit&uacute;an entre un 9 y un 10</strong>. De momento ninguna de las principales cr&iacute;ticas baja de un 9 de puntuaci&oacute;n. As&iacute; que todos se muestran altamente satisfechos con el juego. Buenos ejemplos son medios como IGN, Plygon o Destructoid, que le han dado un 10. Tambi&eacute;n medios nacionales como Hobby Consolas son muy positivos, en este caso con un 9,6 de puntuaci&oacute;n.</p>
+<p>Aunque por lo general las puntuaciones de la prensa en Espa&ntilde;a son algo inferiores. Sin duda&nbsp;God of War promete mucho. Por suerte, la espera ya es muy corta. <strong>Porque el juego se lanzar&aacute; para PS4 el pr&oacute;ximo 20 de abril</strong>. As&iacute; que s&oacute;lo hay que esperar una semana.</p>
+
+		<br />
+			</div><!-- .post-content -->
+</article><!-- .post -->
+
+
+	<div class="abn-trust">
+		<p>El contenido del artículo se adhiere a nuestros principios de <a href="https://www.actualidadgadget.com/etica-editorial/" rel="nofollow">ética editorial</a>. Para notificar un error pincha <a href="https://www.actualidadgadget.com/contacto/" rel="nofollow">aquí</a>.</p>	</div>
+	<p id="breadcrumbs">Ruta completa hacia el artículo: <span><span><a href="https://www.actualidadgadget.com/">Actualidad Gadget</a> » <span><a href="https://www.actualidadgadget.com/category/tecnologia-hogar/">Hogar</a> » <span><a href="https://www.actualidadgadget.com/category/videojuegos/">Videojuegos</a> » <strong class="breadcrumb_last" aria-current="page">Las primeras críticas de God of War son muy positivas</strong></span></span></span></span></p><aside id="text-5" class="widget widget_text"><h3 class="widget-title">Te puede interesar</h3>			<div class="textwidget"><p><ins class="adsbygoogle"
+     style="display:block"
+     data-ad-format="autorelaxed"
+     data-ad-client="ca-pub-2740134681475878"
+     data-ad-slot="4374437665"></ins><br />
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+		</aside>
+<div class="post-comments">
+	<div id="comments" class="comments-area">
+			<h3 id="commentsToggle" class="comments-title" data-script-url="https://www.actualidadgadget.com/wp-includes/js/comment-reply.min.js?ver=6.0.2">
+			<span>Sé el primero en comentar</span>
+		</h3>
+			<div id="commentsContainer">
+					<div id="commentsRespond" >
+					<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Deja tu comentario <small><a rel="nofollow" id="cancel-comment-reply-link" href="/las-primeras-criticas-de-god-of-war-son-muy-positivas/#respond" style="display:none;">Cancelar la respuesta</a></small></h3><form action="https://www.actualidadgadget.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Tu dirección de correo electrónico no será publicada.</span> <span class="required-field-message" aria-hidden="true">Los campos obligatorios están marcados con <span class="required" aria-hidden="true">*</span></span></p><p class="comment-form-comment"><label for="comment">Comentario <span class="required" aria-hidden="true">*</span></label> <textarea autocomplete="new-password"  id="gba902a3b2"  name="gba902a3b2"   cols="45" rows="8" maxlength="65525" required="required"></textarea><textarea id="comment" aria-label="hp-comment" aria-hidden="true" name="comment" autocomplete="new-password" style="padding:0 !important;clip:rect(1px, 1px, 1px, 1px) !important;position:absolute !important;white-space:nowrap !important;height:1px !important;width:1px !important;overflow:hidden !important;" tabindex="-1"></textarea><script type="rocketlazyloadscript" data-noptimize>document.getElementById("comment").setAttribute( "id", "ab94eee0a242cdeb37e683ec9fd09d59" );document.getElementById("gba902a3b2").setAttribute( "id", "comment" );</script></p><p class="comment-form-author"><label for="author">Nombre</label><span class="required">*</span><input id="author" name="author" type="text" value="" size="30" tabindex="1" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Correo electrónico</label><span class="required">*</span><input id="email" name="email" type="text" value="" size="30"  tabindex="2" aria-required='true' /></p>
+
+        <p class="comment-form-privacy"><input id="privacy" name="privacy" type="checkbox"  aria-required='true' />
+            <label>Acepto los <a id="toggleDatos">términos de privacidad</a></label><span class="required">*</span>
+        <div id="contentDatos"><p>
+		<ol>
+			<li>Responsable de los datos: Miguel Ángel Gatón</li>
+			<li>Finalidad de los datos: Controlar el SPAM, gestión de comentarios.</li>
+                        <li>Legitimación: Tu consentimiento</li>
+                        <li>Comunicación de los datos: No se comunicarán los datos a terceros salvo por obligación legal.</li>
+			<li>Almacenamiento de los datos: Base de datos alojada en Occentus Networks (UE)</li>
+			<li>Derechos: En cualquier momento puedes limitar, recuperar y borrar tu información.</li>
+		</ol>
+	</p></div>
+        </p>
+
+
+<div class='tnp-comments'><label for="tnp-comments-checkbox"><input type="checkbox" value="1" name="newsletter" id="tnp-comments-checkbox">&nbsp;Quiero recibir la newsletter</label></div>
+
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Publicar el comentario" /> <input type='hidden' name='comment_post_ID' value='127617' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p></form>	</div><!-- #respond -->
+				</div>
+				</div>
+</div><!-- #comments -->
+</div><!-- .post-comments -->
+
+		<nav id="single-nav">
+			<div class="nav-next alignleft"><a href="https://www.actualidadgadget.com/como-consultar-y-borrar-el-historial-de-ubicaciones-de-google-maps/" rel="nofollow">Cómo consultar y borrar el historial de ubicaciones de Google Maps</a></div>
+			<div class="nav-previous alignright"><a href="https://www.actualidadgadget.com/spotify-y-hulu-se-asocian-para-lanzar-un-plan-de-musica-y-tv-por-1299-dolares-mensuales/" rel="nofollow">Spotify y Hulu se asocian para lanzar un plan de música y TV por 12,99 dólares mensuales</a></div>
+		</nav><!-- #single-nav -->
+		</div><!-- #content.fl -->
+
+
+<!-- * sidebar.php * -->
+<div id="sidebar" class="sidebar widget-area" role="complementary">
+	<aside id="newsletterwidget-2" class="widget widget_newsletterwidget"><h3 class="widget-title">Noticias en tu email</h3>Recibe las últimas noticias sobre tecnología e informática en tu correo electrónico<div class="tnp tnp-widget"><form method="post" action="https://www.actualidadgadget.com/?na=s">
+
+<input type="hidden" name="nr" value="widget"><input type="hidden" name="nlang" value=""><div class="tnp-field tnp-field-firstname"><label for="tnp-1">Nombre</label>
+<input class="tnp-name" type="text" name="nn" id="tnp-1" value=""></div>
+<div class="tnp-field tnp-field-email"><label for="tnp-2">Email</label>
+<input class="tnp-email" type="email" name="ne" id="tnp-2" value="" required></div>
+<div class="tnp-field tnp-privacy-field"><label><input type="checkbox" name="ny" required class="tnp-privacy">&nbsp;<a target="_blank" href="https://www.actualidadgadget.com/aviso-legal/">Acepto las condiciones legales</a></label></div><div class="tnp-field tnp-field-button"><input class="tnp-submit" type="submit" value="Suscribir" >
+</div>
+</form>
+</div></aside><aside id="abn_admanager_sidestealer-10" class="sticky widget widget_abn_admanager_sidestealer"><div class="publi"><!-- 300x600-actualidadgadget -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-2740134681475878"
+     data-ad-slot="8719570537"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><!-- .publi [ Roba1 @  +  ] --></aside></div><!-- #sidebar.fr -->	</div><!-- #main -->
+	
+<!-- Div para la campaña de publicidad -->
+</div>
+<!-- Div para la campaña de publicidad -->
+
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="wrapper">
+	<a id="toplink" class="go-top" href="#top" title="Volver arriba">&uarr;</a>
+					<nav id="social" class="widget">
+				<ul id="social-sidebar" class="menu">
+					<li id="menu-item-36051" class="fa fa-facebook menu-item menu-item-type-custom menu-item-object-custom menu-item-36051"><a title="Actualidad Gadget en Facebook" rel="nofollow" href="http://www.facebook.com/ActualidadGadget">Facebook</a></li>
+<li id="menu-item-36052" class="fa fa-twitter menu-item menu-item-type-custom menu-item-object-custom menu-item-36052"><a title="Actualidad Gadget en Twitter" rel="nofollow" href="http://www.twitter.com/agadget">Twitter</a></li>
+<li id="menu-item-108143" class="fa fa-instagram menu-item menu-item-type-custom menu-item-object-custom menu-item-108143"><a rel="nofollow" href="https://www.instagram.com/actualidadgadget/">Instagram</a></li>
+<li id="menu-item-39162" class="fa fa-youtube menu-item menu-item-type-custom menu-item-object-custom menu-item-39162"><a title="Actualidad Gadget en Youtube" rel="nofollow" href="https://www.youtube.com/user/ActualidadGadget">Youtube</a></li>
+<li id="menu-item-36053" class="fa fa-envelope menu-item menu-item-type-custom menu-item-object-custom menu-item-36053"><a title="Recibe las actualizaciones del blog en tu email" rel="nofollow" href="https://www.actualidadgadget.com/newsletter/">Email RSS</a></li>
+<li id="menu-item-36054" class="fa fa-rss menu-item menu-item-type-custom menu-item-object-custom menu-item-36054"><a title="Suscríbete al feed RSS" rel="nofollow" href="http://feeds.feedburner.com/actualidadgadget">Feed RSS</a></li>
+				</ul>
+			</nav><!-- #social -->
+						<nav id="network" class="widget">
+				<ul id="network-foot" class="menu">
+					<li id="menu-item-133178" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133178"><a href="https://www.actualidadiphone.com">Actualidad iPhone</a></li>
+<li id="menu-item-133190" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133190"><a href="https://www.soydemac.com">Soy de Mac</a></li>
+<li id="menu-item-138873" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138873"><a href="https://appleguias.com">Apple Guías</a></li>
+<li id="menu-item-138329" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138329"><a href="https://androidayuda.com">Android Ayuda</a></li>
+<li id="menu-item-133179" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133179"><a href="https://www.androidsis.com">Androidsis</a></li>
+<li id="menu-item-138872" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138872"><a href="https://www.todoandroid.es">Todo Android</a></li>
+<li id="menu-item-134334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-134334"><a href="https://androidguias.com/">Android Guías</a></li>
+<li id="menu-item-136624" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-136624"><a href="https://movilforum.com/">Móvil Forum</a></li>
+<li id="menu-item-138330" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138330"><a href="https://tabletzona.es">Tablet Zona</a></li>
+<li id="menu-item-133181" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133181"><a href="https://www.windowsnoticias.com">Windows Noticias</a></li>
+<li id="menu-item-138874" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-138874"><a href="https://vidabytes.com">Vida Bytes</a></li>
+<li id="menu-item-133182" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133182"><a href="https://www.creativosonline.org">Creativos Online</a></li>
+<li id="menu-item-133183" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133183"><a href="https://www.todoereaders.com">Todo eReaders</a></li>
+<li id="menu-item-133184" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133184"><a href="https://www.hwlibre.com">Hardware Libre</a></li>
+<li id="menu-item-133185" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133185"><a href="https://www.linuxadictos.com">Linux Adictos</a></li>
+<li id="menu-item-133186" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133186"><a href="https://ubunlog.com">Ubunlog</a></li>
+<li id="menu-item-133187" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133187"><a href="https://blog.desdelinux.net">Desde Linux</a></li>
+<li id="menu-item-133188" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133188"><a href="https://www.guiaswow.com">Guías WoW</a></li>
+<li id="menu-item-133189" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133189"><a href="https://trucosdescargas.com">Trucos Descargas</a></li>
+<li id="menu-item-133486" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133486"><a href="https://www.actualidadmotor.com">Actualidad Motor</a></li>
+<li id="menu-item-133487" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-133487"><a href="https://www.bezzia.com">Bezzia</a></li>
+				</ul>
+			</nav><!-- #social -->
+						<div class="footer-column-full">
+				<aside id="gtranslate-2" class="widget widget_gtranslate"><!-- GTranslate: https://gtranslate.io/ -->
+<style>
+.switcher {font-family:Arial;font-size:12pt;text-align:left;cursor:pointer;overflow:hidden;width:173px;line-height:17px;}
+.switcher a {text-decoration:none;display:block;font-size:12pt;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;}
+.switcher a img {vertical-align:middle;display:inline;border:0;padding:0;margin:0;opacity:0.8;}
+.switcher a:hover img {opacity:1;}
+.switcher .selected {background:#fff linear-gradient(180deg, #efefef 0%, #fff 70%);position:relative;z-index:9999;}
+.switcher .selected a {border:1px solid #ccc;color:#666;padding:3px 5px;width:161px;}
+.switcher .selected a:after {height:24px;display:inline-block;position:absolute;right:10px;width:15px;background-position:50%;background-size:11px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 285 285'><path d='M282 76.5l-14.2-14.3a9 9 0 0 0-13.1 0L142.5 174.4 30.3 62.2a9 9 0 0 0-13.2 0L3 76.5a9 9 0 0 0 0 13.1l133 133a9 9 0 0 0 13.1 0l133-133a9 9 0 0 0 0-13z' style='fill:%23666'/></svg>");background-repeat:no-repeat;content:""!important;transition:all .2s;}
+.switcher .selected a.open:after {-webkit-transform: rotate(-180deg);transform:rotate(-180deg);}
+.switcher .selected a:hover {background:#fff}
+.switcher .option {position:relative;z-index:9998;border-left:1px solid #ccc;border-right:1px solid #ccc;border-bottom:1px solid #ccc;background-color:#eee;display:none;width:171px;max-height:198px;-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;overflow-y:auto;overflow-x:hidden;}
+.switcher .option a {color:#000;padding:3px 5px;}
+.switcher .option a:hover {background:#fff;}
+.switcher .option a.selected {background:#fff;}
+#selected_lang_name {float: none;}
+.l_name {float: none !important;margin: 0;}
+.switcher .option::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 3px rgba(0,0,0,0.3);border-radius:5px;background-color:#f5f5f5;}
+.switcher .option::-webkit-scrollbar {width:5px;}
+.switcher .option::-webkit-scrollbar-thumb {border-radius:5px;-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);background-color:#888;}
+</style>
+<div class="switcher notranslate">
+<div class="selected">
+<a href="#" onclick="return false;"><img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2024%2024'%3E%3C/svg%3E" height="24" width="24" alt="es" data-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/es.png" /><noscript><img src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/es.png" height="24" width="24" alt="es" /></noscript> Spanish</a>
+</div>
+<div class="option">
+<a href="https://www.actualidadgadget.com/af/" onclick="doGTranslate('es|af');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Afrikaans" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/af.png" height="24" width="24" alt="af" /> Afrikaans</a><a href="https://www.actualidadgadget.com/sq/" onclick="doGTranslate('es|sq');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Albanian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sq.png" height="24" width="24" alt="sq" /> Albanian</a><a href="https://www.actualidadgadget.com/am/" onclick="doGTranslate('es|am');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Amharic" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/am.png" height="24" width="24" alt="am" /> Amharic</a><a href="https://www.actualidadgadget.com/ar/" onclick="doGTranslate('es|ar');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Arabic" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ar.png" height="24" width="24" alt="ar" /> Arabic</a><a href="https://www.actualidadgadget.com/hy/" onclick="doGTranslate('es|hy');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Armenian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/hy.png" height="24" width="24" alt="hy" /> Armenian</a><a href="https://www.actualidadgadget.com/az/" onclick="doGTranslate('es|az');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Azerbaijani" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/az.png" height="24" width="24" alt="az" /> Azerbaijani</a><a href="https://www.actualidadgadget.com/eu/" onclick="doGTranslate('es|eu');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Basque" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/eu.png" height="24" width="24" alt="eu" /> Basque</a><a href="https://www.actualidadgadget.com/be/" onclick="doGTranslate('es|be');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Belarusian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/be.png" height="24" width="24" alt="be" /> Belarusian</a><a href="https://www.actualidadgadget.com/bn/" onclick="doGTranslate('es|bn');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Bengali" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/bn.png" height="24" width="24" alt="bn" /> Bengali</a><a href="https://www.actualidadgadget.com/bs/" onclick="doGTranslate('es|bs');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Bosnian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/bs.png" height="24" width="24" alt="bs" /> Bosnian</a><a href="https://www.actualidadgadget.com/bg/" onclick="doGTranslate('es|bg');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Bulgarian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/bg.png" height="24" width="24" alt="bg" /> Bulgarian</a><a href="https://www.actualidadgadget.com/ca/" onclick="doGTranslate('es|ca');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Catalan" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ca.png" height="24" width="24" alt="ca" /> Catalan</a><a href="https://www.actualidadgadget.com/ceb/" onclick="doGTranslate('es|ceb');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Cebuano" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ceb.png" height="24" width="24" alt="ceb" /> Cebuano</a><a href="https://www.actualidadgadget.com/ny/" onclick="doGTranslate('es|ny');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Chichewa" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ny.png" height="24" width="24" alt="ny" /> Chichewa</a><a href="https://www.actualidadgadget.com/zh-CN/" onclick="doGTranslate('es|zh-CN');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Chinese (Simplified)" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/zh-CN.png" height="24" width="24" alt="zh-CN" /> Chinese (Simplified)</a><a href="https://www.actualidadgadget.com/zh-TW/" onclick="doGTranslate('es|zh-TW');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Chinese (Traditional)" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/zh-TW.png" height="24" width="24" alt="zh-TW" /> Chinese (Traditional)</a><a href="https://www.actualidadgadget.com/co/" onclick="doGTranslate('es|co');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Corsican" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/co.png" height="24" width="24" alt="co" /> Corsican</a><a href="https://www.actualidadgadget.com/hr/" onclick="doGTranslate('es|hr');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Croatian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/hr.png" height="24" width="24" alt="hr" /> Croatian</a><a href="https://www.actualidadgadget.com/cs/" onclick="doGTranslate('es|cs');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Czech" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/cs.png" height="24" width="24" alt="cs" /> Czech</a><a href="https://www.actualidadgadget.com/da/" onclick="doGTranslate('es|da');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Danish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/da.png" height="24" width="24" alt="da" /> Danish</a><a href="https://www.actualidadgadget.com/nl/" onclick="doGTranslate('es|nl');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Dutch" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/nl.png" height="24" width="24" alt="nl" /> Dutch</a><a href="https://www.actualidadgadget.com/en/" onclick="doGTranslate('es|en');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="English" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/en.png" height="24" width="24" alt="en" /> English</a><a href="https://www.actualidadgadget.com/eo/" onclick="doGTranslate('es|eo');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Esperanto" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/eo.png" height="24" width="24" alt="eo" /> Esperanto</a><a href="https://www.actualidadgadget.com/et/" onclick="doGTranslate('es|et');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Estonian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/et.png" height="24" width="24" alt="et" /> Estonian</a><a href="https://www.actualidadgadget.com/tl/" onclick="doGTranslate('es|tl');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Filipino" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/tl.png" height="24" width="24" alt="tl" /> Filipino</a><a href="https://www.actualidadgadget.com/fi/" onclick="doGTranslate('es|fi');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Finnish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/fi.png" height="24" width="24" alt="fi" /> Finnish</a><a href="https://www.actualidadgadget.com/fr/" onclick="doGTranslate('es|fr');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="French" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/fr.png" height="24" width="24" alt="fr" /> French</a><a href="https://www.actualidadgadget.com/fy/" onclick="doGTranslate('es|fy');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Frisian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/fy.png" height="24" width="24" alt="fy" /> Frisian</a><a href="https://www.actualidadgadget.com/gl/" onclick="doGTranslate('es|gl');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Galician" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/gl.png" height="24" width="24" alt="gl" /> Galician</a><a href="https://www.actualidadgadget.com/ka/" onclick="doGTranslate('es|ka');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Georgian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ka.png" height="24" width="24" alt="ka" /> Georgian</a><a href="https://www.actualidadgadget.com/de/" onclick="doGTranslate('es|de');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="German" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/de.png" height="24" width="24" alt="de" /> German</a><a href="https://www.actualidadgadget.com/el/" onclick="doGTranslate('es|el');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Greek" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/el.png" height="24" width="24" alt="el" /> Greek</a><a href="https://www.actualidadgadget.com/gu/" onclick="doGTranslate('es|gu');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Gujarati" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/gu.png" height="24" width="24" alt="gu" /> Gujarati</a><a href="https://www.actualidadgadget.com/ht/" onclick="doGTranslate('es|ht');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Haitian Creole" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ht.png" height="24" width="24" alt="ht" /> Haitian Creole</a><a href="https://www.actualidadgadget.com/ha/" onclick="doGTranslate('es|ha');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Hausa" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ha.png" height="24" width="24" alt="ha" /> Hausa</a><a href="https://www.actualidadgadget.com/haw/" onclick="doGTranslate('es|haw');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Hawaiian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/haw.png" height="24" width="24" alt="haw" /> Hawaiian</a><a href="https://www.actualidadgadget.com/iw/" onclick="doGTranslate('es|iw');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Hebrew" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/iw.png" height="24" width="24" alt="iw" /> Hebrew</a><a href="https://www.actualidadgadget.com/hi/" onclick="doGTranslate('es|hi');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Hindi" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/hi.png" height="24" width="24" alt="hi" /> Hindi</a><a href="https://www.actualidadgadget.com/hmn/" onclick="doGTranslate('es|hmn');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Hmong" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/hmn.png" height="24" width="24" alt="hmn" /> Hmong</a><a href="https://www.actualidadgadget.com/hu/" onclick="doGTranslate('es|hu');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Hungarian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/hu.png" height="24" width="24" alt="hu" /> Hungarian</a><a href="https://www.actualidadgadget.com/is/" onclick="doGTranslate('es|is');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Icelandic" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/is.png" height="24" width="24" alt="is" /> Icelandic</a><a href="https://www.actualidadgadget.com/ig/" onclick="doGTranslate('es|ig');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Igbo" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ig.png" height="24" width="24" alt="ig" /> Igbo</a><a href="https://www.actualidadgadget.com/id/" onclick="doGTranslate('es|id');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Indonesian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/id.png" height="24" width="24" alt="id" /> Indonesian</a><a href="https://www.actualidadgadget.com/ga/" onclick="doGTranslate('es|ga');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Irish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ga.png" height="24" width="24" alt="ga" /> Irish</a><a href="https://www.actualidadgadget.com/it/" onclick="doGTranslate('es|it');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Italian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/it.png" height="24" width="24" alt="it" /> Italian</a><a href="https://www.actualidadgadget.com/ja/" onclick="doGTranslate('es|ja');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Japanese" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ja.png" height="24" width="24" alt="ja" /> Japanese</a><a href="https://www.actualidadgadget.com/jw/" onclick="doGTranslate('es|jw');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Javanese" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/jw.png" height="24" width="24" alt="jw" /> Javanese</a><a href="https://www.actualidadgadget.com/kn/" onclick="doGTranslate('es|kn');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Kannada" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/kn.png" height="24" width="24" alt="kn" /> Kannada</a><a href="https://www.actualidadgadget.com/kk/" onclick="doGTranslate('es|kk');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Kazakh" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/kk.png" height="24" width="24" alt="kk" /> Kazakh</a><a href="https://www.actualidadgadget.com/km/" onclick="doGTranslate('es|km');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Khmer" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/km.png" height="24" width="24" alt="km" /> Khmer</a><a href="https://www.actualidadgadget.com/ko/" onclick="doGTranslate('es|ko');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Korean" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ko.png" height="24" width="24" alt="ko" /> Korean</a><a href="https://www.actualidadgadget.com/ku/" onclick="doGTranslate('es|ku');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Kurdish (Kurmanji)" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ku.png" height="24" width="24" alt="ku" /> Kurdish (Kurmanji)</a><a href="https://www.actualidadgadget.com/ky/" onclick="doGTranslate('es|ky');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Kyrgyz" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ky.png" height="24" width="24" alt="ky" /> Kyrgyz</a><a href="https://www.actualidadgadget.com/lo/" onclick="doGTranslate('es|lo');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Lao" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/lo.png" height="24" width="24" alt="lo" /> Lao</a><a href="https://www.actualidadgadget.com/la/" onclick="doGTranslate('es|la');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Latin" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/la.png" height="24" width="24" alt="la" /> Latin</a><a href="https://www.actualidadgadget.com/lv/" onclick="doGTranslate('es|lv');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Latvian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/lv.png" height="24" width="24" alt="lv" /> Latvian</a><a href="https://www.actualidadgadget.com/lt/" onclick="doGTranslate('es|lt');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Lithuanian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/lt.png" height="24" width="24" alt="lt" /> Lithuanian</a><a href="https://www.actualidadgadget.com/lb/" onclick="doGTranslate('es|lb');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Luxembourgish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/lb.png" height="24" width="24" alt="lb" /> Luxembourgish</a><a href="https://www.actualidadgadget.com/mk/" onclick="doGTranslate('es|mk');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Macedonian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/mk.png" height="24" width="24" alt="mk" /> Macedonian</a><a href="https://www.actualidadgadget.com/mg/" onclick="doGTranslate('es|mg');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Malagasy" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/mg.png" height="24" width="24" alt="mg" /> Malagasy</a><a href="https://www.actualidadgadget.com/ms/" onclick="doGTranslate('es|ms');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Malay" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ms.png" height="24" width="24" alt="ms" /> Malay</a><a href="https://www.actualidadgadget.com/ml/" onclick="doGTranslate('es|ml');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Malayalam" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ml.png" height="24" width="24" alt="ml" /> Malayalam</a><a href="https://www.actualidadgadget.com/mt/" onclick="doGTranslate('es|mt');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Maltese" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/mt.png" height="24" width="24" alt="mt" /> Maltese</a><a href="https://www.actualidadgadget.com/mi/" onclick="doGTranslate('es|mi');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Maori" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/mi.png" height="24" width="24" alt="mi" /> Maori</a><a href="https://www.actualidadgadget.com/mr/" onclick="doGTranslate('es|mr');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Marathi" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/mr.png" height="24" width="24" alt="mr" /> Marathi</a><a href="https://www.actualidadgadget.com/mn/" onclick="doGTranslate('es|mn');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Mongolian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/mn.png" height="24" width="24" alt="mn" /> Mongolian</a><a href="https://www.actualidadgadget.com/my/" onclick="doGTranslate('es|my');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Myanmar (Burmese)" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/my.png" height="24" width="24" alt="my" /> Myanmar (Burmese)</a><a href="https://www.actualidadgadget.com/ne/" onclick="doGTranslate('es|ne');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Nepali" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ne.png" height="24" width="24" alt="ne" /> Nepali</a><a href="https://www.actualidadgadget.com/no/" onclick="doGTranslate('es|no');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Norwegian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/no.png" height="24" width="24" alt="no" /> Norwegian</a><a href="https://www.actualidadgadget.com/ps/" onclick="doGTranslate('es|ps');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Pashto" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ps.png" height="24" width="24" alt="ps" /> Pashto</a><a href="https://www.actualidadgadget.com/fa/" onclick="doGTranslate('es|fa');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Persian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/fa.png" height="24" width="24" alt="fa" /> Persian</a><a href="https://www.actualidadgadget.com/pl/" onclick="doGTranslate('es|pl');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Polish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/pl.png" height="24" width="24" alt="pl" /> Polish</a><a href="https://www.actualidadgadget.com/pt/" onclick="doGTranslate('es|pt');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Portuguese" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/pt.png" height="24" width="24" alt="pt" /> Portuguese</a><a href="https://www.actualidadgadget.com/pa/" onclick="doGTranslate('es|pa');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Punjabi" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/pa.png" height="24" width="24" alt="pa" /> Punjabi</a><a href="https://www.actualidadgadget.com/ro/" onclick="doGTranslate('es|ro');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Romanian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ro.png" height="24" width="24" alt="ro" /> Romanian</a><a href="https://www.actualidadgadget.com/ru/" onclick="doGTranslate('es|ru');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Russian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ru.png" height="24" width="24" alt="ru" /> Russian</a><a href="https://www.actualidadgadget.com/sm/" onclick="doGTranslate('es|sm');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Samoan" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sm.png" height="24" width="24" alt="sm" /> Samoan</a><a href="https://www.actualidadgadget.com/gd/" onclick="doGTranslate('es|gd');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Scottish Gaelic" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/gd.png" height="24" width="24" alt="gd" /> Scottish Gaelic</a><a href="https://www.actualidadgadget.com/sr/" onclick="doGTranslate('es|sr');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Serbian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sr.png" height="24" width="24" alt="sr" /> Serbian</a><a href="https://www.actualidadgadget.com/st/" onclick="doGTranslate('es|st');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Sesotho" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/st.png" height="24" width="24" alt="st" /> Sesotho</a><a href="https://www.actualidadgadget.com/sn/" onclick="doGTranslate('es|sn');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Shona" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sn.png" height="24" width="24" alt="sn" /> Shona</a><a href="https://www.actualidadgadget.com/sd/" onclick="doGTranslate('es|sd');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Sindhi" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sd.png" height="24" width="24" alt="sd" /> Sindhi</a><a href="https://www.actualidadgadget.com/si/" onclick="doGTranslate('es|si');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Sinhala" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/si.png" height="24" width="24" alt="si" /> Sinhala</a><a href="https://www.actualidadgadget.com/sk/" onclick="doGTranslate('es|sk');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Slovak" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sk.png" height="24" width="24" alt="sk" /> Slovak</a><a href="https://www.actualidadgadget.com/sl/" onclick="doGTranslate('es|sl');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Slovenian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sl.png" height="24" width="24" alt="sl" /> Slovenian</a><a href="https://www.actualidadgadget.com/so/" onclick="doGTranslate('es|so');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Somali" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/so.png" height="24" width="24" alt="so" /> Somali</a><a href="https://www.actualidadgadget.com" onclick="doGTranslate('es|es');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Spanish" class="nturl selected"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/es.png" height="24" width="24" alt="es" /> Spanish</a><a href="https://www.actualidadgadget.com/su/" onclick="doGTranslate('es|su');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Sudanese" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/su.png" height="24" width="24" alt="su" /> Sudanese</a><a href="https://www.actualidadgadget.com/sw/" onclick="doGTranslate('es|sw');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Swahili" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sw.png" height="24" width="24" alt="sw" /> Swahili</a><a href="https://www.actualidadgadget.com/sv/" onclick="doGTranslate('es|sv');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Swedish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/sv.png" height="24" width="24" alt="sv" /> Swedish</a><a href="https://www.actualidadgadget.com/tg/" onclick="doGTranslate('es|tg');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Tajik" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/tg.png" height="24" width="24" alt="tg" /> Tajik</a><a href="https://www.actualidadgadget.com/ta/" onclick="doGTranslate('es|ta');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Tamil" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ta.png" height="24" width="24" alt="ta" /> Tamil</a><a href="https://www.actualidadgadget.com/te/" onclick="doGTranslate('es|te');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Telugu" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/te.png" height="24" width="24" alt="te" /> Telugu</a><a href="https://www.actualidadgadget.com/th/" onclick="doGTranslate('es|th');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Thai" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/th.png" height="24" width="24" alt="th" /> Thai</a><a href="https://www.actualidadgadget.com/tr/" onclick="doGTranslate('es|tr');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Turkish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/tr.png" height="24" width="24" alt="tr" /> Turkish</a><a href="https://www.actualidadgadget.com/uk/" onclick="doGTranslate('es|uk');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Ukrainian" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/uk.png" height="24" width="24" alt="uk" /> Ukrainian</a><a href="https://www.actualidadgadget.com/ur/" onclick="doGTranslate('es|ur');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Urdu" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/ur.png" height="24" width="24" alt="ur" /> Urdu</a><a href="https://www.actualidadgadget.com/uz/" onclick="doGTranslate('es|uz');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Uzbek" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/uz.png" height="24" width="24" alt="uz" /> Uzbek</a><a href="https://www.actualidadgadget.com/vi/" onclick="doGTranslate('es|vi');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Vietnamese" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/vi.png" height="24" width="24" alt="vi" /> Vietnamese</a><a href="https://www.actualidadgadget.com/cy/" onclick="doGTranslate('es|cy');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Welsh" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/cy.png" height="24" width="24" alt="cy" /> Welsh</a><a href="https://www.actualidadgadget.com/xh/" onclick="doGTranslate('es|xh');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Xhosa" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/xh.png" height="24" width="24" alt="xh" /> Xhosa</a><a href="https://www.actualidadgadget.com/yi/" onclick="doGTranslate('es|yi');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Yiddish" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/yi.png" height="24" width="24" alt="yi" /> Yiddish</a><a href="https://www.actualidadgadget.com/yo/" onclick="doGTranslate('es|yo');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Yoruba" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/yo.png" height="24" width="24" alt="yo" /> Yoruba</a><a href="https://www.actualidadgadget.com/zu/" onclick="doGTranslate('es|zu');jQuery('div.switcher div.selected a').html(jQuery(this).html());return false;" title="Zulu" class="nturl"><img data-gt-lazy-src="//www.actualidadgadget.com/wp-content/plugins/gtranslate/flags/24/zu.png" height="24" width="24" alt="zu" /> Zulu</a></div>
+</div>
+<script type="rocketlazyloadscript">window.addEventListener('DOMContentLoaded', function() {
+jQuery('.switcher .selected').click(function() {jQuery('.switcher .option a img').each(function() {if(!jQuery(this)[0].hasAttribute('src'))jQuery(this).attr('src', jQuery(this).attr('data-gt-lazy-src'))});if(!(jQuery('.switcher .option').is(':visible'))) {jQuery('.switcher .option').stop(true,true).delay(100).slideDown(500);jQuery('.switcher .selected a').toggleClass('open')}});
+jQuery('.switcher .option').bind('mousewheel', function(e) {var options = jQuery('.switcher .option');if(options.is(':visible'))options.scrollTop(options.scrollTop() - e.originalEvent.wheelDelta);return false;});
+jQuery('body').not('.switcher').click(function(e) {if(jQuery('.switcher .option').is(':visible') && e.target != jQuery('.switcher .option').get(0)) {jQuery('.switcher .option').stop(true,true).delay(100).slideUp(500);jQuery('.switcher .selected a').toggleClass('open')}});
+});</script>
+
+
+<script type="rocketlazyloadscript">
+function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.pathname.split('/')[1];if(plang.length !=2 && plang != 'zh-CN' && plang != 'zh-TW' && plang != 'hmn' && plang != 'haw' && plang != 'ceb')plang='es';if(lang == 'es')location.href=location.protocol+'//'+location.host+gt_request_uri;else location.href=location.protocol+'//'+location.host+'/'+lang+gt_request_uri;}
+</script>
+<script type="rocketlazyloadscript">window.addEventListener('DOMContentLoaded', function() {jQuery(document).ready(function() {var lang_html = jQuery(".switcher div.option a[onclick*='|"+jQuery('html').attr('lang')+"']").html();if(typeof lang_html != "undefined")jQuery('.switcher div.selected a').html(lang_html.replace("data-gt-lazy-", ""))});});</script></aside>			</div><!-- col-full -->
+			
+		<div id="foot-menu">
+		<ul id="navigation-foot" class="menu"><li id="menu-item-130758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-130758"><a href="https://www.actualidadgadget.com/secciones/">Secciones</a></li>
+<li id="menu-item-38993" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38993"><a href="https://www.actualidadgadget.com/equipo-editorial/">Equipo editorial</a></li>
+<li id="menu-item-137492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-137492"><a rel="nofollow" href="https://www.actualidadgadget.com/etica-editorial/">Ética editorial</a></li>
+<li id="menu-item-132570" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-132570"><a rel="nofollow" href="https://docs.google.com/spreadsheet/embeddedform?formkey=dHZvZ1VQYmV0Sk12RUxLM1YzZGVHSnc6MA">Hazte redactor</a></li>
+<li id="menu-item-113047" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-113047"><a href="https://www.actualidadgadget.com/descargar-whatsapp/">Descargar Whatsapp</a></li>
+<li id="menu-item-131758" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-131758"><a rel="nofollow" href="https://www.actualidadgadget.com/newsletter/">Newsletter</a></li>
+<li id="menu-item-38994" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-38994"><a rel="nofollow" href="https://www.actualidadgadget.com/aviso-legal/">Aviso legal</a></li>
+<li id="menu-item-38992" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38992"><a rel="nofollow" href="http://creativecommons.org/licenses/by-nc-sa/2.5/es/">Licencia</a></li>
+<li id="menu-item-46074" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46074"><a rel="nofollow" href="https://www.actualidadgadget.com/publicidad/">Publicidad</a></li>
+<li id="menu-item-38995" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-38995"><a rel="nofollow" href="https://www.actualidadgadget.com/contacto/">Contacto</a></li>
+</ul>		</div><!-- #foot-menu -->
+	</div><!-- .wrap -->
+</footer><!-- #colophon -->
+<div id="searchBar" class="search-bar">
+	
+<!-- * searchform.php * -->
+<form method="get" id="searchform" action="https://www.actualidadgadget.com/">
+	<input type="text" id="searchFormInput" class="field" name="s" id="s" placeholder="Buscar..." />
+	<input type="submit" id="searchFormSubmit" class="submit" name="submit" id="searchsubmit" value="Buscar" />
+	<span class="close-button">Cerrar</span>
+</form></div>
+
+<script id="abnSchemaJsonWebsite" type="application/ld+json">{"@context": "https://schema.org","@type": "WebSite","name": "Actualidad Gadget","url": "https://www.actualidadgadget.com"}</script>
+<script id="abnSchemaJsonOrganization" type="application/ld+json">{"@context": "https://schema.org","@type": "Organization","name": "Actualidad Gadget","url": "https://www.actualidadgadget.com","logo": "https://www.actualidadgadget.com/wp-content/uploads/2019/04/actgadget_amp2-1.png","address": {"@type": "PostalAddress","addressLocality": "Grijota - Palencia","postalCode": "34192","streetAddress": "Urbanizacion El Palomar, 20"}}</script>
+<script id="abnSchemaJsonNewsArticle" type="application/ld+json">{"@context": "https://schema.org","@type": "NewsArticle","headline": "Las primeras críticas de God of War son muy positivas","description": "La prensa especializada sitúa God of War como el mejor juego del año. Descubre más sobre las críticas tan positivas que el juego para PS4 está obteniendo por parte de la crítica.","datePublished": "2018-04-13 14:00:27","commentCount": "0","wordCount": "350","copyrightYear": "2018","articleSection": "Videojuegos","mainEntityOfPage": {"@type": "WebPage","id": "https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/","name": "Las primeras críticas de God of War son muy positivas","url": "https://www.actualidadgadget.com/las-primeras-criticas-de-god-of-war-son-muy-positivas/","inLanguage": "es","datePublished": "2018-04-13 14:00:27","description": "La prensa especializada sitúa God of War como el mejor juego del año. Descubre más sobre las críticas tan positivas que el juego para PS4 está obteniendo por parte de la crítica.","speakable": {"@type":"SpeakableSpecification","xpath":["/html/head/title","/html/head/meta[@name='description']/@content"]}},"author": {"@type": "Person","name": "Eder Esteban","url": "https://www.actualidadgadget.com/author/eder-esteban/"},"publisher": {"@type": "Organization","name": "Actualidad Gadget","url": "https://www.actualidadgadget.com","logo": {"@type": "ImageObject","url": "https://www.actualidadgadget.com/wp-content/uploads/2019/04/actgadget_amp2-1.png","width": "601","height": "61"}},"publishingPrinciples": {"@type": "CreativeWork","url": "https://www.actualidadgadget.com/etica-editorial"},"copyrightHolder": {"@type": "Organization","name": "Actualidad Gadget","url": "https://www.actualidadgadget.com","logo": {"@type": "ImageObject","url": "https://www.actualidadgadget.com/wp-content/uploads/2019/04/actgadget_amp2-1.png","width": "601","height": "61"}},"image": {"@type": "ImageObject","url": "https://www.actualidadgadget.com/wp-content/uploads/2018/03/god-of-war.jpg","width": "830","height": "400"}}</script>
+<script id="abnSchemaJsonBreadcrumb" type="application/ld+json">{"@context": "https://schema.org","@type": "BreadcrumbList",
+"itemListElement": [{"type": "ListItem","position": "1","name": "Actualidad Gadget","item": {"@type": "Thing","id": "https://www.actualidadgadget.com"}},
+{"type": "ListItem","position": "2","name": "Consolas","item": {"@type": "Thing","id": "https://www.actualidadgadget.com/category/consolas/"}},
+{"type": "ListItem","position": "3","name": "Videojuegos","item": {"@type": "Thing","id": "https://www.actualidadgadget.com/category/videojuegos/"}}]}</script>
+<script type="rocketlazyloadscript">
+		
+var machete_cookies_bar_html = '<span id="machete_cookie_warning_text" class="machete_cookie_warning_text">Las cookies de este sitio web se usan para personalizar el contenido y los anuncios, ofrecer funciones de redes sociales y analizar el tráfico. <a style="color: #007FFF" href="https://www.actualidadgadget.com/aviso-legal/" rel="nofollow">+info</a></span> <button id="machete_accept_cookie_btn_partial" class="machete_accept_cookie_btn partial">Aceptar las obligatorias</button> <button id="machete_accept_cookie_btn" class="machete_accept_cookie_btn">Aceptar cookies</button>';
+var machete_cookies_configbar_html = '<div id="machete_cookie_config_btn\" class=\"machete_cookie_config_btn\">Cookies</div>';
+var machete_cookies_bar_stylesheet = 'https://www.actualidadgadget.com/wp-content/plugins/machete/inc/cookies/css/new_light.css';
+
+(function(){
+	if ( typeof machete_cookies_bar_stylesheet === 'undefined') return;
+	var s = document.createElement('script'); s.type = 'text/javascript';
+	s.defer = true; s.src = 'https://www.actualidadgadget.com/wp-content/plugins/machete/inc/cookies/js/cookies_bar_js.min.js';
+	var body = document.getElementsByTagName('body')[0];
+	body.appendChild(s);
+})();
+</script>
+		<script type='text/javascript' id='thickbox-js-extra'>
+/* <![CDATA[ */
+var thickboxL10n = {"next":"Siguiente >","prev":"< Anterior","image":"Imagen","of":"de","close":"Cerrar","noiframes":"Esta funci\u00f3n necesita frames integrados. Tienes los iframes desactivados o tu navegador no es compatible.","loadingAnimation":"https:\/\/www.actualidadgadget.com\/wp-includes\/js\/thickbox\/loadingAnimation.gif"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-includes/js/thickbox/thickbox.js?ver=1662449464' id='thickbox-js' defer></script>
+<script type='text/javascript' id='toc-front-js-extra'>
+/* <![CDATA[ */
+var tocplus = {"visibility_show":"Mostrar","visibility_hide":"Ocultar","width":"100%"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/plugins/AB-table-of-contents-plus/front.min.js?ver=1509' id='toc-front-js'></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=1662449464' id='swv-js' defer></script>
+<script type='text/javascript' id='contact-form-7-js-extra'>
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/www.actualidadgadget.com\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/includes/js/index.js?ver=1662449464' id='contact-form-7-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/plugins/responsive-lightbox-pro/assets/nivo-lightbox/nivo-lightbox.min.js?ver=6.0.2' id='responsive-lightbox-nivo_lightbox-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/plugins/responsive-lightbox-pro/assets/js/jquery.touchSwipe.min.js?ver=6.0.2' id='wa_rlp_touch_script-js' defer></script>
+<script type='text/javascript' id='responsive-lightbox-pro-script-js-extra'>
+/* <![CDATA[ */
+var rlpArgs = {"script":"nivo_lightbox","selector":"lightbox","custom_events":"","theme":"default","effect":"fade","clickOverlayToClose":"1","touch_swipe":"1","autoplay_video":"0","keyboardNav":"0","errorMessage":"Error al cargar la imagen, recarga la p\u00e1gina para probar de nuevo."};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/responsive-lightbox-pro/assets/js/script.js?ver=1662449464' id='responsive-lightbox-pro-script-js' defer></script>
+<script type='text/javascript' id='abn-scripts-js-extra'>
+/* <![CDATA[ */
+var ABN = {"gfont":"osans","home-featured-posts":"on","captcha_public":"","captcha_private":"","main-color":"#125774","alt-color":"#063C53","enlightment":"on","feedburner-rss":"http:\/\/feeds.feedburner.com\/actualidadgadget","brands-footer":"on","scrapper_blog_url":"https:\/\/www.androidsis.com\/","scrapper_blog_name":"Androidsis","scrapper_post_url":"https:\/\/www.androidsis.com\/como-saber-que-aplicaciones-android-son-las-que-mas-datos-consumen\/","scrapper_expiration_date":"2018-09-28","category_ban":"68054,68053","section-wpo-preconnect":"","section-wpo-styles-exclusion":"","trendy_menu":"","show_tags_posts":"on"};
+/* ]]> */
+</script>
+<script data-minify="1" type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/themes/abn/js/scripts.js?ver=1662449464' id='abn-scripts-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/aawp/assets/dist/js/main.js?ver=1662449464' id='aawp-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.google.com/recaptcha/api.js?render=6LepWYAUAAAAAEDg1PD45JIzPSAfef2xy0GHpJSq&#038;ver=3.0' id='google-recaptcha-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.9' id='regenerator-runtime-js' defer></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script type='text/javascript' id='wpcf7-recaptcha-js-extra'>
+/* <![CDATA[ */
+var wpcf7_recaptcha = {"sitekey":"6LepWYAUAAAAAEDg1PD45JIzPSAfef2xy0GHpJSq","actions":{"homepage":"homepage","contactform":"contactform"}};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/wp-content/plugins/contact-form-7/modules/recaptcha/index.js?ver=1662449464' id='wpcf7-recaptcha-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type='text/javascript' src='https://www.actualidadgadget.com/wp-content/cache/min/1/sdks/OneSignalSDK.js?ver=1662449465' async='async' id='remote_sdk-js'></script>
+
+<!--
+	This site is optimized with the WP Rich Snippets version 1.4.8 by https://wprichsnippets.com 
+ -->
+    <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+        /* <![CDATA[ */
+        var aawp_geotargeting_api = "";
+        var aawp_geotargeting_settings = {"store":"es","mode":"title"};
+        var aawp_geotargeting_localized_stores = {"au":"com.au","nz":"com.au","de":"de","at":"de","ch":"de","fr":"fr","nl":"nl","it":"it","se":"se","mx":"com.mx","gb":"co.uk","ie":"co.uk","us":"com","ar":"com","cl":"com","pe":"com","bo":"com","py":"com","co":"com","ve":"com","ec":"com","ca":"com"};
+        var aawp_geotargeting_tracking_ids = {"com.au":"portbaratosau-22","de":"portbaratosde-21","fr":"portbaratosfr-21","it":"portbaratosit-21","com.mx":"actgadgetmx-20","nl":"portbaratosnl-21","se":"portbaratosse-21","co.uk":"portbaratosuk-21","com":"actgadget-20"};
+        /* ]]> */
+    </script>
+    <script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://www.actualidadgadget.com/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1663024016 -->
